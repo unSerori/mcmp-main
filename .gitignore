@@ -8,8 +8,6 @@ memo.md
 .vscode/
 
 # volumes
-share/
-db-data/
 
 # docker-composeで使う.env
 .env
