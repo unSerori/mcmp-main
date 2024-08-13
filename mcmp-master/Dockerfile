@@ -18,4 +18,4 @@ EXPOSE 35353
 EXPOSE 25565
 
 # 起動時に鯖実行
-#CMD ["java", "-Xmx512M", "-Xms128M", "-jar", "multipaper-master.jar", "35353", "25565"]
+CMD ["java", "-Xmx512M", "-Xms128M", "-jar", "multipaper-master.jar", "35353", "25565"]

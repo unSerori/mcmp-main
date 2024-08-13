@@ -16,5 +16,4 @@ RUN curl -o multipaper.jar ${MULTIPAPER_SLAVE_URL}
 EXPOSE 25565
 
 # 起動時に鯖実行
-# CMD ["java", "-DbungeecordName=server114514", "-DmultipaperMasterAddress=192.168.10.115:35353", "-Xmx512M", "-Xms128M", "-jar", "multipaper.jar"]
-# MD ["java", "-Xmx512M", "-Xms128M", "-jar", "multipaper.jar"]
+CMD ["java", "-DmultipaperMasterAddress=mcmp-master-srv:35353", "-Xmx512M", "-Xms128M", "-jar", "multipaper.jar"]
