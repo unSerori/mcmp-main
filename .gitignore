@@ -8,6 +8,9 @@ memo.md
 .vscode/
 
 # volumes
+./mcmp-master/world
+./mcmp-master/world_nether
+./mcmp-master/world_the_end
 
 # docker-composeで使う.env
 .env

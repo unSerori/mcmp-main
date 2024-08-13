@@ -1,9 +1,11 @@
 services:  # コンポースするサービスたち
-    mcmp_master:  # サービスの名前
-        container_name: mp_master  # コンテナ名
-        # volumes:  # ボリュームの保持。
-        #     - ./mcmp-master/world:/root/mc-server/world # world data
-        #     - ./mcmp-master/setting.yml:/root/mc-server/setting.yml # setting file
+    mcmp-master-srv:  # サービスの名前
+        container_name: mcmp-master  # コンテナ名
+        volumes:  # ボリュームの保持
+            - ./mcmp-master/world:/root/mc-server/world # world data
+            - ./mcmp-master/world_nether:/root/mc-server/world_nether # world data
+            - ./mcmp-master/world_the_end:/root/mc-server/world_the_end # world data
+        #     - .
         build:  # ビルド設定
             context: ./mcmp-master  # ビルドプロセスが実行されるパス。
             dockerfile: Dockerfile  # Dockerfileのパス。
@@ -18,10 +20,11 @@ services:  # コンポースするサービスたち
             TZ: "Asia/Tokyo"
         tty: true  # コンテナ内で対話的操作を可能
 
-    mcmp_slave:  # サービスの名前
-        container_name: mp_slave  # コンテナ名
-        # volumes:  # ボリュームの保持。
-        #     - ./mcmp-master/setting.yml:/root/mc-server/setting.yml # setting file
+    mcmp-slave-srv:  # サービスの名前
+        container_name: mcmp-slave  # コンテナ名
+        volumes:  # ボリュームの保持
+            - ./mcmp-slave/spigot.yml:/root/mcmp-slave/spigot.yml # setting file
+            - ./mcmp-slave/eula.txt:/root/mcmp-slave/eula.txt # eula
         build:  # ビルド設定
             context: ./mcmp-slave  # ビルドプロセスが実行されるパス。
             dockerfile: Dockerfile  # Dockerfileのパス。

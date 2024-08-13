@@ -3,7 +3,7 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 # 作業ディレクトリの設定
-WORKDIR /root/mp-master
+WORKDIR /root/mc-server
 
 # 必要なパッケージのインストール
 RUN apt-get update && apt-get install -y curl
