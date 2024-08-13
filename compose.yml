@@ -5,7 +5,6 @@ services:  # コンポースするサービスたち
             - ./mcmp-master/world:/root/mc-server/world # world data
             - ./mcmp-master/world_nether:/root/mc-server/world_nether # world data
             - ./mcmp-master/world_the_end:/root/mc-server/world_the_end # world data
-        #     - .
         build:  # ビルド設定
             context: ./mcmp-master  # ビルドプロセスが実行されるパス。
             dockerfile: Dockerfile  # Dockerfileのパス。
