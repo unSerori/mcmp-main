@@ -41,6 +41,7 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
 - .env内のMULTIPAPER_MASTER_URLを更新
 - .env内のMULTIPAPER_SLAVE_URLを更新
 - .env内のBASE_IMAGEを適切なJKDイメージに変更
+- .env内のPROXY_REPOSITORY_URLを適切なプロキシサーバーリポジトリに変更:だたしこの項目が変わることはおそらくなく、想定していない
 
 ```bash
 # 再ビルド&再起動
