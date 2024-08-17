@@ -46,19 +46,21 @@ OSインストールから作業用PCから公開鍵SSH接続できるまで。
         # install
         sudo apt install -y avahi-daemon
         # 起動
-        sudo systemctl start avahi-daemon
+        sudo systemctl restart avahi-daemon
         # 自動起動
         sudo systemctl enable avahi-daemon
 
-        # よくわからない
-        sudo apt install -y  libnss-mdns
+        # avihiの設定を上書きしてるんだと思う
+        sudo apt install -y libnss-mdns
 
-        # ufwを一度有効化
-        sudo apt install ufw
-        # STOP
-        systemctl stop ufw
-        # START
-        systemctl start ufw
+        # ここからは不要かも
+
+        # ufw
+        sudo apt install -y ufw
+        systemctl restart ufw
+        systemctl enable ufw
+        # dbus
+        sudo /etc/init.d/dbus restart
 
         # これでusername@hostname.localでsshできるはず。
         ```

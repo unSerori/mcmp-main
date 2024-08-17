@@ -7,8 +7,8 @@ WORKDIR /root/velocity
 
 # 必要なパッケージのインストール
 RUN apt-get update \
-    && apt-get install -y curl \
-    && apt-get install -y git
+    && apt-get install -y git \
+    && apt-get install avahi-utils -y
 
 # velocityのDLとビルド
 ARG PROXY_REPOSITORY_URL
