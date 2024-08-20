@@ -8,9 +8,9 @@ memo.md
 .vscode/
 
 # volumes
-world/
-world_nether/
-world_the_end/
+# world/
+# world_nether/
+# world_the_end/
 
 # docker-composeで使う.env
 .env
