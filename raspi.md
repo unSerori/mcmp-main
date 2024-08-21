@@ -15,7 +15,7 @@ OSインストールから作業用PCから公開鍵SSH接続できるまで。
 ### インストールと諸設定
 
 1. EtcherでDietPiをストレージに書き込み
-2. wi-fi設定など
+2. wi-fi設定、IP固定など（dietpi-config）
 3. ユーザーを追加
 
     ```bash
