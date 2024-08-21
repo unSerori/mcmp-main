@@ -14,8 +14,6 @@ RUN curl -o multipaper-master.jar ${MULTIPAPER_MASTER_URL}
 
 # マスターのデフォルトポートの公開 ここにスレーブが接続
 EXPOSE 35353
-# プロキシのデフォルトポートの公開 ここにプレイヤーが接続しプロキシされる
-EXPOSE 25565
 
 # 起動時に鯖実行
-CMD ["java", "-Xmx512M", "-Xms128M", "-jar", "multipaper-master.jar", "35353", "25565"]
+CMD ["java", "-Xmx512M", "-Xms128M", "-jar", "multipaper-master.jar", "35353"]

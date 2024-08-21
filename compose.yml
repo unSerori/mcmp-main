@@ -53,9 +53,6 @@ services:  # コンポースするサービスたち
             - ./mcmp-slave/config:/root/mcmp-slave/config # setting file paper-global.yml
             - ./mcmp-slave/server.properties:/root/mcmp-slave/server.properties # setting file
             - ./mcmp-slave/spigot.yml:/root/mcmp-slave/spigot.yml # setting file
-        # これいらんかも
-        # ports:  # ホストマシンのポートとコンテナのポートをマッピングしてポートを公開
-        #     - "25566:25565"  # masterが接続するポート
         restart: always  # コンテナの再起動
         environment:  # 環境変数
             EULA: "true"
