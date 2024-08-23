@@ -31,7 +31,7 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
     BASE_IMAGE=jkdのベースイメージ。ここではeclipse-temurin:x.y.z_a-jdkを使用。
     MULTIPAPER_MASTER_URL=multipaper-master-x.y.z-all.jarのDLリンク
     MULTIPAPER_SLAVE_URL=multipaper-x.y.z-a.jarのDLリンク
-
+    PROXY_REPOSITORY_URL=velocityのリポジトリhttpsリンク
     ```
 
 ## サーバーの公開
