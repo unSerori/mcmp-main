@@ -34,9 +34,58 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
 
     ```
 
-## サーバーアップデート TODO: 
+## サーバーの公開
 
-新しいバージョンがリリースされた場合の更新方法
+ポート開放かtailscaleでシェアするのが楽だと感じた  
+ただ、ポート開放だと施設のネットワーク構成よってはダメになるかもしれないからtailscaleでVPN建てて、デバイスをシェアして接続してもらうのがいいと思う
+
+### tailscale導入のメリット
+
+- VPNを作成するから、ポート開放しなくていい
+- プライベートだから、ほかの人が入ってこれない
+- ローカルのデバイス名でアクセスできるから、グローバルIPの変更があってもサーバー設定を更新しなくていい
+
+### mainでのtailscale導入手順
+
+1. tailscaleの垢登録: [登録サイト](https://login.tailscale.com/start)
+2. 登録の後そのまま進めば各OSごとのインストール手順があるので従う
+3. [管理コンソール](https://login.tailscale.com/admin/machines)でマシンのシェアリンクを取得してプレイヤーに共有
+
+### 参加プレイヤーのtailscale導入手順
+
+1. tailscaleの垢登録: [登録サイト](https://login.tailscale.com/start)
+2. 登録の後そのまま進めば各OSごとのインストール手順があるので従う
+3. main管理者から`share用のリンク`をもらってアクセス、適用する
+4. [管理コンソール](https://login.tailscale.com/admin/machines)に追加されたmainサーバーのアドレスをコピーしてゲーム内のアドレス入力欄に入力して参加
+
+## マイクラ鯖起動
+
+初回起動
+
+```bash
+# SSHで入った後以下実行でビルド&再起動
+bash update.sh
+```
+
+2回目以降
+
+```bash
+# SSHで入った後以下実行でコンテナーup
+bash start.sh
+```
+
+## サーバー停止
+
+```bash
+# サーバーシャットダウン
+bash stop.sh
+```
+
+## サーバー更新 TODO: 
+
+### 新しいバージョンがリリースされた場合の更新方法
+
+諸情報を更新してスクリプト実行
 
 - .env内のMULTIPAPER_MASTER_URLを更新
 - .env内のMULTIPAPER_SLAVE_URLを更新
@@ -45,17 +94,5 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
 
 ```bash
 # 再ビルド&再起動
-docker compose build && docker compose up -d
-
-# (詳細なログはbuildコマンドに以下を追加)
---progress=plain
-```
-
-## マイクラ鯖起動
-
-```bash
-# SSHで入った後以下実行でコンテナーup
-docker compose up -d
-
-# サーバーシャットダウン
+bash update.sh
 ```
