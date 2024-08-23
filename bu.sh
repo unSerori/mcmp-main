@@ -5,7 +5,7 @@ sh_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" # 実行場所を相対�
 cd $sh_dir
 
 # setting variable
-time=3 # s
+time=30 # s
 msg="§7§mなるよじ"
 header_msg_en="§a§n§lAutomatic announcement by §9§n§l§oMAIN-MASTER§r§a§n§l."
 header_msg_jp="§9§n§l§oMAIN-MASTER§a§n§lによる自動アナウンス。"
