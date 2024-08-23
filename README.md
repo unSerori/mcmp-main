@@ -34,6 +34,58 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
     PROXY_REPOSITORY_URL=velocityのリポジトリhttpsリンク
     ```
 
+## バックアップについて
+
+デフォルトではbu_storageディレクトリにバックアップを取る  
+ただ、これではストレージ自体が死んだとき（主に物理）に意味をなさない  
+そのためusbメモリを差してマウントした  
+
+### usbメモリマウント手順
+
+すでに作業用PCでFAT32やNTFSにフォーマット済みのてい  
+もしできてないなら大まかに以下のようにフォーマットする
+
+```bash
+# デバイス識別子の確認
+sudo fdisk -l
+
+# パーティションの作成
+sudo fdisk /dev/デバイス識別子
+
+# バーティションのフォーマット
+sudo フォーマット形式 /dev/デバイス識別子
+
+# フォーマット形式
+# ext4: mkfs.ext4: linux専用
+# FAT32: mkfs.vfat: windows, linux, mac利用可能
+# exFAT: mkfs.exfat: FAT32よりもファイルサイズ制限が緩い
+# NTFS: mkfs.ntfs: windows
+
+```
+
+```bash
+# マウント先のディレクトリを作成
+mkdir -p ./bu_strage
+
+# uid, gidを確認
+id mcmp
+
+# デバイス識別子の確認
+lsblk
+
+# マウント 適宜uid, gid, dev/*, ~/*
+sudo mount -o owner,uid=<uid>,gid=<gid> /dev/<デバイス識別子> /home/mcmp/mcmp-main/bu_storage
+
+# 自動マウント
+# デバイス識別子からuuidとtypeを取得
+lsblk -f | grep <デバイス識別子>
+# /etc/fstabに下記を追加
+UUID=<uuid> /<マウント先ディレクトリ> <形式（FSTYPE）> defaults,uid=<uid>,gid=<gid> 0 0
+
+# アンマウントする場合
+sudo umount /dev/<デバイス識別子> /home/mcmp/mcmp-main/bu_storage
+```
+
 ## サーバーの公開
 
 ポート開放かtailscaleでシェアするのが楽だと感じた  

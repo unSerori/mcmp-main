@@ -6,7 +6,8 @@ FROM ${BASE_IMAGE}
 WORKDIR /root/mc-server
 
 # 必要なパッケージのインストール
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update \
+    && apt-get install -y curl
 
 # MultiPaperのdl
 ARG MULTIPAPER_MASTER_URL

@@ -39,6 +39,12 @@ OSインストールから作業用PCから公開鍵SSH接続できるまで。
     passwd mcmp
     ```
 
+6. タイムゾーンを変更
+
+    ```bash
+    sudo timedatectl set-timezone Asia/Tokyo
+    ```
+
 ### SSH接続関連
 
 1. mDNSサーバインストールしてhostname.localで名前解決できるようにする

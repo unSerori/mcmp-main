@@ -6,11 +6,21 @@ FROM ${BASE_IMAGE}
 WORKDIR /root/mcmp-slave
 
 # 必要なパッケージのインストール
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update \
+    && apt-get install -y git curl gcc make
+
 
 # MultiPaperのdl
 ARG MULTIPAPER_SLAVE_URL
 RUN curl -o multipaper.jar ${MULTIPAPER_SLAVE_URL}
+
+# cronのビルド
+RUN mkdir -p /opt/mcrcon \
+    && cd /opt/mcrcon \
+    && git clone https://github.com/Tiiffi/mcrcon.git \
+    && cd mcrcon \
+    && make \
+    && cp mcrcon /usr/local/bin/
 
 # スレーブのデフォルトポートの公開 Minecraftのデフォルトポートで、プロキシされたプレイヤーはここに接続される
 EXPOSE 25565

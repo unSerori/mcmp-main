@@ -15,5 +15,8 @@ world_the_end/
 # docker-composeで使う.env
 .env
 
+# バックアップストレージのマウント用フォルダ
+bu_storage/
+
 # empty folder
 !.gitignore
