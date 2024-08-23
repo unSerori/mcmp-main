@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# change work dir
+sh_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" # 実行場所を相対パスで取得し、そこにサブシェルで移動、pwdで取得
+cd $sh_dir
+
 # setting variable
 time=3 # s
 msg="§7§mなるよじ"
@@ -19,17 +23,17 @@ bu_fol_datetime="world_bu_data_$(date +%Y%m%d%H%M%S)"
 # 保存先ディレクトリを作成
 mkdir -p "bu_storage/${bu_fol_datetime}"
 
-# ゲームサーバー内のプレイヤーにmsgを送る
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${msg}"
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${header_msg_en}"
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${header_msg_jp}"
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${bu_alart_msg_en}"
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${bu_alart_msg_jp}"
+# ゲームサーバー内のプレイヤーにmsgを送る cronに登録したら送れなくなったけど-itコマンド消したらうまく動いた
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${msg}"
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${header_msg_en}"
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${header_msg_jp}"
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${bu_alart_msg_en}"
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${bu_alart_msg_jp}"
 
 # 切断前のmsg
 sleep ${time} # 待機時間
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${disconnection_msg_en}"
-docker exec -it mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${disconnection_msg_jp}"
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${disconnection_msg_en}"
+docker exec mcmp-slave mcrcon -H localhost -P 25555 -p password "say ${disconnection_msg_jp}"
 sleep 1
 
 # サーバー停止
