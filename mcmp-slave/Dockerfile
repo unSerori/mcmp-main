@@ -26,4 +26,4 @@ RUN mkdir -p /opt/mcrcon \
 EXPOSE 25565
 
 # 起動時に鯖実行
-CMD ["java", "-DmultipaperMasterAddress=mcmp-master-srv:35353", "-Xmx512M", "-Xms128M", "-jar", "multipaper.jar"]
+CMD ["java", "-DmultipaperMasterAddress=mcmp-master-srv:35353", "-Xmx1024M", "-Xms128M", "-jar", "multipaper.jar"]

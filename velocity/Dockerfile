@@ -23,4 +23,4 @@ RUN git clone ${PROXY_REPOSITORY_URL} \
 EXPOSE 25565
 
 # 起動コマンド
-CMD [ "java", "-Xmx512M", "-Xms512M", "-jar", "velocity.jar" ]
+CMD [ "java", "-Xmx512M", "-Xms128M", "-jar", "velocity.jar" ]
