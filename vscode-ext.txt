@@ -22,5 +22,4 @@ zakudriver.nyan-mode
 chunsen.bracket-select
 rangav.vscode-thunder-client
 humao.rest-client
-
 ms-azuretools.vscode-docker
